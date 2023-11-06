@@ -1,16 +1,20 @@
 # Project Title
 Payroll Tracker
-## Overview
 
+## Overview
 What is your app? Brief description in a couple of sentences.
 
-### Problem
+The app is a time tracking and attendance management application that allows employees to clock in and out of work using a QR code reader. It also provides a feature to display the weekly hours worked by each employee and calculates their corresponding wages, making it easier for management to determine how much to pay each employee.
 
+### Problem
 Why is your app needed? Background information around any pain points or other reasons.
 
-### User Profile
+The app is needed to address the time tracking and attendance management challenges faced by small businesses that haven't yet implemented HR or payroll solutions. Many small businesses currently rely on manual methods, including my experience as project manager having employees write down their hours in a payroll binder, which can lead to chaotic record-keeping and potential issues like lost binders. This app aims to streamline the process, making it more efficient and less prone to errors or data loss, ultimately saving businesses time and resources.
 
+### User Profile
 Who will use your app? How will they use it? Any special considerations that your app must take into account.
+
+Small Business Owners/Managers: Small business owners or managers will be the primary users of the app. They will use it to track the attendance and working hours of their employees, generate reports, and calculate wages.
 
 ### Features
 
