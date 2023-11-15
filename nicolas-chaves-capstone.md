@@ -62,10 +62,10 @@ List the pages of your app with brief descriptions. You can show this visually, 
 ### Mockups
 Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
 
-![PayPatrol Home Page Mockup]('IMG_0299.PNG' "Home Page Mockup")
-![PayPatrol Dashboard Page Mockup]('IMG_0300.PNG' "Dashboard Page Mockup")
-![PayPatrol Employee Management Page Mockup]('IMG_0301.PNG' "Employee Management Page Mockup")
-![PayPatrol Reports Page Mockup]('IMG_0302.PNG' "Reports Page Mockup")
+![PayPatrol Home Page Mockup](IMG_0299.PNG "Home Page Mockup")
+![PayPatrol Dashboard Page Mockup](IMG_0300.PNG "Dashboard Page Mockup")
+![PayPatrol Employee Management Page Mockup](IMG_0301.PNG "Employee Management Page Mockup")
+![PayPatrol Reports Page Mockup](IMG_0302.PNG "Reports Page Mockup")
   
 
 ### Data
