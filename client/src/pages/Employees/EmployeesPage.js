@@ -1,5 +1,5 @@
-import Employees from '../../components/employees/employees';
-import './Employees.scss';
+import Employees from '../../components/Employees/Employees';
+import './EmployeesPage.scss';
 
 function EmployeesPage () {
 
