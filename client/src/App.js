@@ -1,7 +1,9 @@
 import './App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Attendance from './components/Attendance/Attendance';
-import Employees from './components/Employees/Employees';
+import DashboardPage from './pages/Dashboard/DashboardPage';
+import EmployeesPage from './pages/Employees/EmployeesPage';
+import AttendancePage from './pages/AttendancePage/AttendancePage';
+import ClockIn from './components/ClockIn/ClockIn';
 
 function App() {
   return (
@@ -9,8 +11,10 @@ function App() {
       {/* <Header /> */}
       <Routes>
         {/* <Route path='/' element={<Home />} /> */}
-        <Route path='/employees' element={<Employees />} />
-        <Route path='/attendance' element={<Attendance />} />
+        <Route path='/dashboard' element={<DashboardPage />} />
+        <Route path='/dashboard/clockin' element={<ClockIn />} />
+        <Route path='/employees' element={<EmployeesPage />} />
+        <Route path='/attendance' element={<AttendancePage />} />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>
