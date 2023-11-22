@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import './ClockIn.scss';
 import axios from 'axios';
+import Scanner from '../Scanner/Scanner';
 
 function ClockIn() {
     const [employee_id, setEmployee_id] = useState('');
+
+    const handleScan = (result) => {
+        const employeeId = result.split('/').pop();
+        setEmployee_id(employeeId);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,13 +24,24 @@ function ClockIn() {
             alert('You have been clocked in');
             setEmployee_id('');
         } catch (error) {
-            console.error('Error recording clock-in:', error);
+            if (error.response) {
+                console.error('Error recording clock-in:', error.response.data);
+                alert(error.response.data);
+            } else if (error.request) {
+                console.error('Error recording clock-in:', error.request);
+            } else {
+                console.error('Error:', error.message);
+            }
         }
     };
 
     return (
         <>
             <h2>Clock In!</h2>
+            <div>
+                <h2>Scan Here</h2>
+                <Scanner onScan={handleScan} />
+            </div>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label> ID: </label>
@@ -34,33 +51,6 @@ function ClockIn() {
                         onChange={(e) => setEmployee_id(e.target.value)}
                     />
                 </div>
-                {/* <div>
-                    <label> first name: </label>
-                    <input
-                        type='text'
-                        name='first_name'
-                        value={clockInData.first_name}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label> last name: </label>
-                    <input
-                        type='text'
-                        name='last_name'
-                        value={clockInData.last_name}
-                        onChange={handleChange}
-                    />
-                </div> */}
-                {/* <div>
-                <label> clock in time</label>
-                    <input 
-                    type='text'
-                    name='clock_in_time'
-                    value={clockInData.clock_in_time}
-                    onChange={handleChange}
-                    />
-                </div> */}
                 <button type='submit'>Clock In!</button>
             </form>
         </>

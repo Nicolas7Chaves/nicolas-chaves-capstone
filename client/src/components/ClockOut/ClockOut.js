@@ -10,7 +10,7 @@ function ClockOut() {
         const clock_out_time = new Date().toISOString();
 
         try {
-            const response = await axios.post('http://localhost:8081/attendance/clockout', {
+            const response = await axios.put('http://localhost:8081/attendance/clockout', {
                 employee_id,
                 clock_out_time: clock_out_time
             });

@@ -1,42 +1,28 @@
-import { Html5QrcodeScanner } from 'html5-qrcode';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import QrScanner from 'qr-scanner';
+import QrScannerWorker from 'qr-scanner/qr-scanner-worker.min.js';
+import './Scanner.scss'
+QrScanner.WORKER_PATH = '/qr-scanner-worker.min.js';
 
-function Scanner() {
-    const [scanResult, setScanResult] = useState(null);
-
+function Scanner({ onScan }) {
+    const videoRef = useRef();
     useEffect(() => {
-        const scanner = new Html5QrcodeScanner('reader', {
-            qrbox: { width: 250, height: 250 },
-            fps: 5,
+        const qrScanner = new QrScanner(videoRef.current, result => {
+            console.log('decoded qr code:', result);
+            onScan(result);
+            qrScanner.stop();
         });
 
-        scanner.render(success, error);
+        qrScanner.start();
 
-        function success(result) {
-            scanner.clear();
-            setScanResult(result);
-        }
-
-        function error(err) {
-            console.error('QR Code scan error:', err);
-        }
         return () => {
-            scanner.clear();
+            qrScanner.stop();
         };
-    }, []);
+    }, [onScan]);
 
     return (
-        <>
-            <h1>Scan Here</h1>
-            <div id='reader'></div>
-            {scanResult && (
-                <div>
-                    <h2>Scan Result:</h2>
-                    <p>{scanResult}</p>
-                </div>
-            )}
-        </>
-    );
-};
+        <video className='qr-container' ref={videoRef} />
+        );
+}
 
 export default Scanner;
