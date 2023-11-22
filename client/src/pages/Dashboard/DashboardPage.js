@@ -9,7 +9,7 @@ function DashboardPage() {
             <h2>Clock In or Out!</h2>
             <div>
                 <button onClick={() => navigate('/dashboard/clockin')}>Clock In!</button>
-                <button>Clock Out!</button>
+                <button onClick={() => navigate('/dashboard/clockout')}>Clock Out!</button>
             </div>
         </>
     );
