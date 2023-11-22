@@ -21,11 +21,12 @@ function Employees() {
 
     return (
         <>
-        <div>Employees</div>
+            <div>Employees</div>
             {employees.map(employee => (
-                <div>Employee Id: 
+                <div>
+                    <h3>Employee Id: </h3>
                     {employee?.id}
-                    <h2>{employee?.first_name} {employee?.last_name}</h2>
+                    <p>{employee?.first_name} {employee?.last_name}</p>
                     <p>Hourly Rate: {employee?.hourly_rate}</p>
                 </div>
             ))}
