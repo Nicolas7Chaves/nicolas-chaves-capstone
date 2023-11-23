@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import './ClockIn.scss';
 import axios from 'axios';
 import Scanner from '../Scanner/Scanner';
@@ -6,13 +6,7 @@ import Scanner from '../Scanner/Scanner';
 function ClockIn() {
     const [employee_id, setEmployee_id] = useState('');
 
-    const handleScan = (result) => {
-        const employeeId = result.split('/').pop();
-        setEmployee_id(employeeId);
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = useCallback(async () => {
         const clock_in_time = new Date().toISOString();
 
         try {
@@ -22,17 +16,17 @@ function ClockIn() {
             });
             console.log(response.data);
             alert('You have been clocked in');
+            window.location.reload();
             setEmployee_id('');
         } catch (error) {
-            if (error.response) {
-                console.error('Error recording clock-in:', error.response.data);
-                alert(error.response.data);
-            } else if (error.request) {
-                console.error('Error recording clock-in:', error.request);
-            } else {
-                console.error('Error:', error.message);
-            }
+            // Error handling
         }
+    }, [employee_id]);
+
+    const handleScan = (result) => {
+        const employeeId = result.split('/').pop();
+        setEmployee_id(employeeId);
+        handleSubmit();
     };
 
     return (
@@ -42,7 +36,7 @@ function ClockIn() {
                 <h2>Scan Here</h2>
                 <Scanner onScan={handleScan} />
             </div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
                 <div>
                     <label> ID: </label>
                     <input

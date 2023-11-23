@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import './ClockOut.scss';
 import axios from 'axios';
+import Scanner from '../Scanner/Scanner';
 
 function ClockOut() {
     const [employee_id, setEmployee_id] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = useCallback(async () => {
         const clock_out_time = new Date().toISOString();
 
         try {
@@ -15,17 +15,34 @@ function ClockOut() {
                 clock_out_time: clock_out_time
             });
             console.log(response.data);
-            alert('You have been clocked out');
+            alert('You have clocked out');
+            window.location.reload();
             setEmployee_id('');
         } catch (error) {
             console.error('Error recording clock-out:', error);
         }
+    }, [employee_id]);
+
+    const handleScan = (result) => {
+        const employeeId = result.split('/').pop();
+        setEmployee_id(employeeId);
     };
+
+    useEffect(() => {
+        if (employee_id) {
+            handleSubmit();
+        }
+    }, [employee_id, handleSubmit]);
+
 
     return (
         <>
             <h2>Clock Out!</h2>
-            <form onSubmit={handleSubmit}>
+            <div>
+                <h2>Scan Here</h2>
+                <Scanner onScan={handleScan} />
+            </div>
+            <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
                 <div>
                     <label> ID: </label>
                     <input
