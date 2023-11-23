@@ -1,50 +1,100 @@
-import './Attendance.scss';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import './Attendance.scss';
 
 function Attendance() {
-    const [attendance, setAttendance] = useState([]);
+    const [weeklyAttendance, setWeeklyAttendance] = useState({});
+    const [startDate, setStartDate] = useState(moment().startOf('isoWeek').toDate());
 
     useEffect(() => {
-        async function getAttendance() {
-            try {
-                const response = await axios.get(`http://localhost:8081/attendance`);
-                setAttendance(response.data);
-            }
-            catch (error) {
-                console.error(`Error retrieving attendance records. Error: ${error}`);
-            }
-        }
-        getAttendance();
-    }, []);
+        // Automatically set endDate to Sunday of the selected week
+        const endDate = moment(startDate).endOf('isoWeek').toDate();
+        getAttendance(startDate, endDate);
+    }, [startDate]);
 
-    // Function to calculate the duration worked
-    const calculateDuration = (clockIn, clockOut) => {
-        if (!clockOut) return '---';  // Handle cases where clock-out is not recorded yet
-        const duration = moment.duration(moment(clockOut).diff(moment(clockIn)));
-        return duration.asHours().toFixed(2); // Returns the duration in hours, rounded to two decimals
+    async function getAttendance(start, end) {
+        try {
+            const response = await axios.get(`http://localhost:8081/attendance`, {
+                params: {
+                    startDate: moment(start).format('YYYY-MM-DD'),
+                    endDate: moment(end).format('YYYY-MM-DD')
+                }
+            });
+            processAttendanceData(response.data);
+        } catch (error) {
+            console.error(`Error retrieving attendance records. Error: ${error}`);
+        }
+    }
+
+    const processAttendanceData = (data) => {
+        let aggregatedData = {};
+        data.forEach(record => {
+            const dayOfWeek = moment(record.date).format('dddd');
+            if (!aggregatedData[record.employee_id]) {
+                aggregatedData[record.employee_id] = {
+                    name: `${record.first_name} ${record.last_name}`,
+                    hourly_rate: record.hourly_rate,
+                    totalHours: 0,
+                    days: {}
+                };
+            }
+            const duration = record.clock_out_time ? moment.duration(moment(record.clock_out_time).diff(moment(record.clock_in_time))).asHours() : 0;
+            aggregatedData[record.employee_id].days[dayOfWeek] = duration;
+            aggregatedData[record.employee_id].totalHours += duration;
+            if (record.employee_id === 1) {
+                console.log(`Employee 1 - Date: ${record.date}, Duration: ${duration}, Total Hours So Far: ${aggregatedData[record.employee_id].totalHours}`);
+            }
+        });
+        setWeeklyAttendance(aggregatedData);
+    };
+    const filterMondays = (date) => {
+        const day = moment(date).day();
+        return day === 1; // 1 represents Monday
     };
 
     return (
         <>
-            <div>Attendance</div>
-            <div>
-                {attendance.map(record => (
-                    <div key={record.id}>
-                        <h3>Employee Id: {record.employee_id}</h3>
-                        <p>Employee: {record.first_name} {record.last_name}</p>
-                        <p>Clock In Time: {record.clock_in_time}</p>
-                        <p>Clock Out Time: {record.clock_out_time || '---'}</p>
-                        <p>Total Time Clocked In: {calculateDuration(record.clock_in_time, record.clock_out_time)} hours</p>
-                        <p>Hourly Rate: ${record.hourly_rate.toFixed(2)}</p>
-                        <p>Total Pay: ${(
-                            parseFloat(calculateDuration(record.clock_in_time, record.clock_out_time)) * record.hourly_rate
-                        ).toFixed(2)}</p>
-                        <p>Date: {record.date}</p>
-                    </div>
-                ))}
+            <div className="date-picker-container">
+                <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    filterDate={filterMondays}
+                    inline
+                />
             </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                        <th>Total Hours</th>
+                        <th>Total Pay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {Object.entries(weeklyAttendance).map(([employeeId, info]) => (
+                        <tr key={employeeId}>
+                            <td>{employeeId}</td>
+                            <td>{info.name}</td>
+                            {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
+                                <td key={day}>{info.days[day] ? info.days[day].toFixed(2) : '0'}</td>
+                            ))}
+                            <td>{info.totalHours.toFixed(2)}</td>
+                            <td>${(info.hourly_rate * info.totalHours).toFixed(2)}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </>
     );
 }
