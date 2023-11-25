@@ -1,15 +1,17 @@
 import { useState, useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ClockOut.scss';
 import axios from 'axios';
 import Scanner from '../Scanner/Scanner';
 
 function ClockOut() {
     const [employee_id, setEmployee_id] = useState('');
+    const navigate = useNavigate(); // Hook for navigation
 
-    // Define handleAlertAndReload function inside your component
-    const handleAlertAndReload = (message) => {
+    // Define handleAlertAndNavigate function inside your component
+    const handleAlertAndNavigate = (message) => {
         alert(message);
-        window.location.reload();
+        navigate('/dashboard'); // Navigate to dashboard after alert
     };
 
     const handleSubmit = useCallback(async () => {
@@ -22,18 +24,18 @@ function ClockOut() {
             })
             .then(response => {
                 console.log(response.data);
-                handleAlertAndReload('Clocked out successfully.');
+                handleAlertAndNavigate('Clocked out successfully.');
                 setEmployee_id('');
             })
             .catch(error => {
                 console.error('Error recording clock-out:', error);
-                handleAlertAndReload('Error during clock out.');
+                handleAlertAndNavigate('Error during clock out.');
             });
         } catch (error) {
             console.error('Error recording clock-out:', error);
-            handleAlertAndReload('Error during clock out.');
+            handleAlertAndNavigate('Error during clock out.');
         }
-    }, [employee_id]);
+    }, [employee_id, navigate]);
 
     const handleScan = (result) => {
         const employeeId = result.split('/').pop();
@@ -66,6 +68,6 @@ function ClockOut() {
             </form>
         </>
     );
-};
+}
 
 export default ClockOut;
