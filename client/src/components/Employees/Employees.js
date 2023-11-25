@@ -1,7 +1,7 @@
 import './Employees.scss';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import User from '../../assets/svg/User.svg'
 
 function Employees() {
     const [employees, setEmployees] = useState([]);
@@ -24,9 +24,16 @@ function Employees() {
             <div className="employees-container">
                 {employees.map(employee => (
                     <div key={employee.id} className="employee-box">
-                        <h3 className='employee__header'>Employee Id: {employee.id}</h3>
-                        <p className='employee__name'>{employee.first_name} {employee.last_name}</p>
-                        <p className='employee__rate'>Hourly Rate: {employee.hourly_rate}</p>
+                        <div className='layout'>
+                            <div className='employee'>
+                                <h3 className='employee__header'>Employee Id: {employee.id}</h3>
+                                <p className='employee__name'>{employee.first_name} {employee.last_name}</p>
+                                <p className='employee__rate'>Hourly Rate: {employee.hourly_rate}</p>
+                            </div>
+                            <div className='layout2'>
+                                <img src={User} alt="default logo for user profile" className='employee__picture' />
+                            </div>
+                        </div>
                         <p className={`employee__status ${employee.isClockedIn ? 'clocked-in' : 'clocked-out'}`}>
                             Status: {employee.isClockedIn ? 'Clocked In' : 'Clocked Out'} </p>
                     </div>
