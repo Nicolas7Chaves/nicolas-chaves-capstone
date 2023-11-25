@@ -1,0 +1,44 @@
+@use '../../partials/fonts' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals' as *;
+@use '../../partials/variables' as *;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem;
+    background-color: $blue;
+
+    &__layout {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    &__button {
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        color: $white;
+        border-radius: 5px;
+        border: 1.5px solid $white;
+        margin-right: 1rem;
+        background-color: $blue;
+        font-weight: 700;
+
+        &__button-layout {
+            display: flex;
+        }
+        &:hover {
+            background-color: $dark-blue; 
+            transition: background-color 0.8s ease;// Slightly darker on hover
+        }
+    }
+    &__button--active {
+        background-color: $dark-blue; // Darker background color for active button
+    }
+    // Styling specific to the Home button
+    .header__button--home {
+        margin-right: auto; // Pushes all other elements to the right
+    }
+}
