@@ -5,7 +5,6 @@ function EmployeesPage () {
 
     return (
         <>
-        <div>Header</div>
         <Employees />
         </>
     )

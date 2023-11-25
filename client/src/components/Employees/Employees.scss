@@ -1,0 +1,47 @@
+@use '../../partials/fonts' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals' as *;
+@use '../../partials/variables' as *;
+
+
+.employees-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+
+    .employee-box {
+        background-color: $background;
+        padding: 1rem;
+        border: 1px solid $slate;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .employee__header {
+            margin: 0.5rem 0;
+        }
+    }
+}
+
+.employee__status {
+    margin: 0.5rem 0;
+    
+    border-radius: 5px;
+
+    &.clocked-in {
+        background-color: rgb(133, 188, 133);
+        color: $white;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        padding: 0.25rem;
+    }
+    &.clocked-out {
+        color: $black;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        padding: 0.25rem;
+        border: 1px solid $slate;
+    }
+}

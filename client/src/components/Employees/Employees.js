@@ -21,15 +21,17 @@ function Employees() {
 
     return (
         <>
-            <div>Employees</div>
-            {employees.map(employee => (
-                <div key={employee.id}>
-                    <h3>Employee Id: {employee.id}</h3>
-                    <p>{employee.first_name} {employee.last_name}</p>
-                    <p>Hourly Rate: {employee.hourly_rate}</p>
-                    <p>Status: {employee.isClockedIn ? 'Clocked In' : 'Clocked Out'}</p>
-                </div>
-            ))}
+            <div className="employees-container">
+                {employees.map(employee => (
+                    <div key={employee.id} className="employee-box">
+                        <h3 className='employee__header'>Employee Id: {employee.id}</h3>
+                        <p className='employee__name'>{employee.first_name} {employee.last_name}</p>
+                        <p className='employee__rate'>Hourly Rate: {employee.hourly_rate}</p>
+                        <p className={`employee__status ${employee.isClockedIn ? 'clocked-in' : 'clocked-out'}`}>
+                            Status: {employee.isClockedIn ? 'Clocked In' : 'Clocked Out'} </p>
+                    </div>
+                ))}
+            </div>
         </>
     );
 }
