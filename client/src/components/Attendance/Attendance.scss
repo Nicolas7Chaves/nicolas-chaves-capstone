@@ -1,0 +1,107 @@
+@use '../../partials/fonts' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals' as *;
+@use '../../partials/variables' as *;
+
+.container {
+    margin: 2rem;
+}
+
+
+.table {
+    border-collapse: collapse;
+    margin: 2rem 0;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+    &__head {
+        background-color: $blue;
+        color: $white;
+        text-align: center;
+    }
+
+    &__head-label {
+        padding: .25rem .5rem;
+        text-align: center;
+        font-weight: 700;
+        min-width: 2rem;
+    }
+
+    &__head-label--id {
+        min-width: 2rem;
+    }
+
+    &__head-label--name,
+    &__head-label--day {
+        min-width: 3rem;
+    }
+
+    &__head-label--name {
+        text-align: left;
+    }
+
+    &__body {
+        tr {
+            border-bottom: thin solid $white;
+            text-align: center;
+
+            &:nth-of-type(even) {
+                background-color: $cloud;
+            }
+
+            &:last-of-type {
+                border-bottom: 1px solid $blue;
+            }
+        }
+    }
+
+    &__body--name {
+        text-align: left;
+    }
+}
+
+
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.react-datepicker {
+    border: 1px solid $blue;
+    border-radius: 10px;
+
+    &__header {
+        background-color: $blue;
+        color: white;
+
+        .react-datepicker__current-month,
+        .react-datepicker-time__header {
+            color: #fff;
+        }
+    }
+
+    .react-datepicker__day-name {
+        color: $white;
+    }
+
+    .react-datepicker__day,
+    .react-datepicker__time-name {
+        &:hover {
+            background-color: $cloud;
+        }
+    }
+
+    .react-datepicker__navigation--previous {
+        margin-top: 10px;
+    }
+
+    .react-datepicker__navigation--next {
+        margin-top: 10px;
+    }
+}
+
+.react-datepicker__day--selected {
+    color: $white;
+    background-color: $blue;
+    font-weight: 700;
+}

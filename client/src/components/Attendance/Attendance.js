@@ -32,7 +32,7 @@ function Attendance() {
     const processAttendanceData = (data) => {
         let aggregatedData = {};
         data.forEach(record => {
-            // Use UTC time for calculation
+            //UTC time for calculation
             const clockInTimeUtc = moment.utc(record.clock_in_time);
             const clockOutTimeUtc = record.clock_out_time ? moment.utc(record.clock_out_time) : null;
             const dayOfWeek = clockInTimeUtc.local().format('dddd'); // Convert to local time for day of week
@@ -60,44 +60,48 @@ function Attendance() {
 
     return (
         <>
+        <section className='container'>
             <div className="date-picker-container">
-                <DatePicker
+                <DatePicker 
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     filterDate={filterMondays}
                     inline
                 />
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Employee ID</th>
-                        <th>Employee Name</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                        <th>Saturday</th>
-                        <th>Sunday</th>
-                        <th>Total Hours</th>
-                        <th>Total Pay</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {Object.entries(weeklyAttendance).map(([employeeId, info]) => (
-                        <tr key={employeeId}>
-                            <td>{employeeId}</td>
-                            <td>{info.name}</td>
-                            {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
-                                <td key={day}>{info.days[day] ? info.days[day].toFixed(2) : '0'}</td>
-                            ))}
-                            <td>{info.totalHours.toFixed(2)}</td>
-                            <td>${(info.hourly_rate * info.totalHours).toFixed(2)}</td>
+            <div className='table-container'>
+                <table className='table'>
+                    <thead className='table__head'>
+                        <tr className='table__head-label'>
+                            <th className='table__head-label--id'>ID</th>
+                            <th className='table__head-label--name'>Employee Name</th>
+                            <th className='table__head-label--day'>Mon</th>
+                            <th className='table__head-label--day'>Tues</th>
+                            <th className='table__head-label--day'>Wed</th>
+                            <th className='table__head-label--day'>Thurs</th>
+                            <th className='table__head-label--day'>Fri</th>
+                            <th className='table__head-label--day'>Sat</th>
+                            <th className='table__head-label--day'>Sun</th>
+                            <th>Total Hours</th>
+                            <th>Total Pay</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody className='table__body'>
+                        {Object.entries(weeklyAttendance).map(([employeeId, info]) => (
+                            <tr key={employeeId}>
+                                <td>{employeeId}</td>
+                                <td className='table__body--name'>{info.name}</td>
+                                {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
+                                    <td key={day}>{info.days[day] ? info.days[day].toFixed(2) : '0'}</td>
+                                ))}
+                                <td>{info.totalHours.toFixed(2)}</td>
+                                <td>${(info.hourly_rate * info.totalHours).toFixed(2)}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            </section>
         </>
     );
 }

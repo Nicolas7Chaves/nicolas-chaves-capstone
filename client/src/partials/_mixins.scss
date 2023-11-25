@@ -1,0 +1,142 @@
+@use 'variables' as *;
+
+
+@mixin tablet {
+    @media screen and (min-width: $breakpoint-tablet) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $breakpoint-desktop) {
+        @content;
+    }
+}
+
+// DESKTOP H1 HEADER FONT STYLES ******************************
+@mixin desk-h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+}
+
+// DESKTOP SUBHEADER FONT STYLES ******************************
+@mixin desk-h2 {
+    font-size: 1.5rem;
+    line-height: 32px;
+    font-weight: 600;
+}
+
+// DESKTOP LABELS/LINKS/BUTTONS FONT STYLES ******************************
+@mixin desk-h3 {
+    font-size: .875rem;
+    line-height: 1.375rem;
+    font-weight: 600;
+}
+
+// DESKTOP TABLE HEADER FONT STYLES ******************************
+@mixin desk-h4 {
+    font-size: .75rem;
+    line-height: 1.125rem;
+    font-weight: 600;
+}
+
+// DESKTOP BODY LARGE FONT STYLE ******************************
+@mixin desk-p1 {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+}
+
+// DESKTOP BODY MEDIUM FONT STYLE ******************************
+@mixin desk-p2 {
+    font-size: .875rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+}
+
+// DESKTOP BODY SMALL FONT STYLE ******************************
+@mixin desk-p3 {
+    font-size: .75rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+}
+
+// MOBILE H1 HEADER FONT STYLES *************************************
+@mixin mob-h1 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+}
+
+// MOBILE SUBHEADER FONT STYLES *************************************
+@mixin mob-h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+}
+
+// MOBILE LABELS/LINKS/BUTTONS FONT STYLES *************************************
+@mixin mob-h3 {
+    font-size: .8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+}
+
+// MOBILE TABLE HEADER FONT STYLES *************************************
+@mixin mob-h4 {
+    font-size: .6875rem;
+    line-height: 1rem;
+    font-weight: 600;
+}
+
+// MOBILE BODY LARGE FONT STYLES *************************************
+@mixin mob-p1 {
+    font-size: .9375rem;
+    line-height: 1.625rem;
+    font-weight: 400;
+}
+
+// MOBILE BODY MEDIUM FONT STYLES *************************************
+@mixin mob-p2 {
+    font-size: .8125rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+}
+
+// MOBILE BODY SMALL FONT STYLES *************************************
+@mixin mob-p3 {
+    font-size: .6875rem;
+    line-height: 1rem;
+    font-weight: 400;
+}
+
+
+// MOBILE PADDING ***************************
+@mixin pad-mob {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+}
+
+// TABLET PADDING ***************************
+@mixin pad-tab {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+// DESKTOP PADDING ***************************
+@mixin pad-desk {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+// BUTTON  ***************************
+
+@mixin button-mob {
+
+    padding-left: $btn-pd;
+    padding-right: $btn-pd;
+    height: $btn-ht-mb;
+    border-radius: $btn-rd;
+}
