@@ -23,11 +23,11 @@ function Employees() {
         <>
             <div>Employees</div>
             {employees.map(employee => (
-                <div>
-                    <h3>Employee Id: </h3>
-                    {employee?.id}
-                    <p>{employee?.first_name} {employee?.last_name}</p>
-                    <p>Hourly Rate: {employee?.hourly_rate}</p>
+                <div key={employee.id}>
+                    <h3>Employee Id: {employee.id}</h3>
+                    <p>{employee.first_name} {employee.last_name}</p>
+                    <p>Hourly Rate: {employee.hourly_rate}</p>
+                    <p>Status: {employee.isClockedIn ? 'Clocked In' : 'Clocked Out'}</p>
                 </div>
             ))}
         </>

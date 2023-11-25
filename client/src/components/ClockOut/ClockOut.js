@@ -6,20 +6,32 @@ import Scanner from '../Scanner/Scanner';
 function ClockOut() {
     const [employee_id, setEmployee_id] = useState('');
 
+    // Define handleAlertAndReload function inside your component
+    const handleAlertAndReload = (message) => {
+        alert(message);
+        window.location.reload();
+    };
+
     const handleSubmit = useCallback(async () => {
         const clock_out_time = new Date().toISOString();
 
         try {
-            const response = await axios.put('http://localhost:8081/attendance/clockout', {
+            axios.put('http://localhost:8081/attendance/clockout', {
                 employee_id,
                 clock_out_time: clock_out_time
+            })
+            .then(response => {
+                console.log(response.data);
+                handleAlertAndReload('Clocked out successfully.');
+                setEmployee_id('');
+            })
+            .catch(error => {
+                console.error('Error recording clock-out:', error);
+                handleAlertAndReload('Error during clock out.');
             });
-            console.log(response.data);
-            alert('You have clocked out');
-            window.location.reload();
-            setEmployee_id('');
         } catch (error) {
             console.error('Error recording clock-out:', error);
+            handleAlertAndReload('Error during clock out.');
         }
     }, [employee_id]);
 
@@ -33,7 +45,6 @@ function ClockOut() {
             handleSubmit();
         }
     }, [employee_id, handleSubmit]);
-
 
     return (
         <>
@@ -56,4 +67,5 @@ function ClockOut() {
         </>
     );
 };
+
 export default ClockOut;
