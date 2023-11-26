@@ -1,17 +1,16 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './DashboardPage.scss';
 
 function DashboardPage() {
     const navigate = useNavigate();
     return (
-        <>
-            <h2>Clock In or Out!</h2>
-            <div>
-                <button onClick={() => navigate('/dashboard/clockin')}>Clock In!</button>
-                <button onClick={() => navigate('/dashboard/clockout')}>Clock Out!</button>
+        <div className='dashboard'>
+            <h2 className='dashboard__title'>Welcome</h2>
+            <div className='dashboard__button-layout'>
+                <button className='dashboard__button' onClick={() => navigate('/dashboard/clockin')}>Clock In!</button>
+                <button className='dashboard__button' onClick={() => navigate('/dashboard/clockout')}>Clock Out!</button>
             </div>
-        </>
+        </div>
     );
 };
 export default DashboardPage;

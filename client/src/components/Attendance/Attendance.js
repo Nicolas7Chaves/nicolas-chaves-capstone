@@ -29,30 +29,32 @@ function Attendance() {
         }
     }
 
-    const processAttendanceData = (data) => {
+    const processAttendanceData = (mergedData) => {
         let aggregatedData = {};
-        data.forEach(record => {
-            //UTC time for calculation
-            const clockInTimeUtc = moment.utc(record.clock_in_time);
-            const clockOutTimeUtc = record.clock_out_time ? moment.utc(record.clock_out_time) : null;
-            const dayOfWeek = clockInTimeUtc.local().format('dddd'); // Convert to local time for day of week
-
-            console.log(`Processing: ${clockInTimeUtc.format()}, Day: ${dayOfWeek}`);
-
-            if (!aggregatedData[record.employee_id]) {
-                aggregatedData[record.employee_id] = {
-                    name: `${record.first_name} ${record.last_name}`,
-                    hourly_rate: record.hourly_rate,
-                    totalHours: 0,
-                    days: {}
-                };
-            }
-            const duration = clockOutTimeUtc ? clockOutTimeUtc.diff(clockInTimeUtc, 'hours', true) : 0;
-            aggregatedData[record.employee_id].days[dayOfWeek] = (aggregatedData[record.employee_id].days[dayOfWeek] || 0) + duration;
-            aggregatedData[record.employee_id].totalHours += duration;
+        mergedData.forEach(employeeRecord => {
+            const employeeId = employeeRecord.id;
+            const attendanceRecords = employeeRecord.attendance;
+    
+            aggregatedData[employeeId] = {
+                name: `${employeeRecord.first_name} ${employeeRecord.last_name}`,
+                hourly_rate: employeeRecord.hourly_rate,
+                totalHours: 0,
+                days: {}
+            };
+    
+            attendanceRecords.forEach(record => {
+                const clockInTimeUtc = moment.utc(record.clock_in_time);
+                const clockOutTimeUtc = record.clock_out_time ? moment.utc(record.clock_out_time) : null;
+                const dayOfWeek = clockInTimeUtc.local().format('dddd');
+    
+                const duration = clockOutTimeUtc ? clockOutTimeUtc.diff(clockInTimeUtc, 'hours', true) : 0;
+                aggregatedData[employeeId].days[dayOfWeek] = (aggregatedData[employeeId].days[dayOfWeek] || 0) + duration;
+                aggregatedData[employeeId].totalHours += duration;
+            });
         });
         setWeeklyAttendance(aggregatedData);
     };
+    
     const filterMondays = (date) => {
         const day = moment(date).day();
         return day === 1; // 1 represents Monday

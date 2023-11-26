@@ -1,0 +1,84 @@
+@use '../../partials/fonts' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals' as *;
+@use '../../partials/variables' as *;
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    &__content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        border-radius: 5px;
+    }
+
+    &__close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    &__title {
+        font-size: 2rem;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__label {
+        font-size: 1.25rem;
+        margin: .5rem 0;
+    }
+
+    &__input {
+        height: 3rem;
+        border-radius: 5px;
+        background-color: $background;
+        border: none;
+        font-size: 1.25rem;
+        margin: .5rem 0;
+        padding-left: .75rem;
+    }
+
+    &__button {
+        width: 100%;
+        height: 2rem;
+        margin-top: .5rem;
+        border-radius: 5px;
+        border: 1px solid $slate;;
+    }
+
+    &__button--save {
+        transition: border-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+
+        &:hover {
+            border-color: $green;
+            color: $green;
+            border: 2px solid $green;
+        }
+    }
+
+    &__button--remove {
+        transition: border-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+
+        &:hover {
+            border-color: $red;
+            color: $red;
+            border: 2px solid $red;
+        }
+    }
+}

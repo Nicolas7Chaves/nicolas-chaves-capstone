@@ -1,0 +1,23 @@
+@use '../../partials/fonts' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals' as *;
+@use '../../partials/variables' as *;
+
+.clock-out {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__title {
+        font-size: 3rem;
+    }
+    &__scanner-title{
+        font-size: 1.5rem;
+    }
+    &__manual {
+        display: none;
+    }
+
+    &__manual-button {
+        display: none;
+    }
+}
