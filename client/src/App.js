@@ -7,6 +7,7 @@ import ClockIn from './components/ClockIn/ClockIn';
 import Header from './components/Header/Header';
 import HomePage from './pages/Home/HomePage';
 import ClockOut from './components/ClockOut/ClockOut';
+import AddEmployeePage from './pages/AddEmployeePage/AddEmployeePage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/dashboard/clockin' element={<ClockIn />} />
         <Route path='/dashboard/clockout' element={<ClockOut />} />
         <Route path='/employees' element={<EmployeesPage />} />
+        <Route path='/employees/add-employee' element={<AddEmployeePage />} />
         <Route path='/attendance' element={<AttendancePage />} />
       </Routes>
       {/* <Footer /> */}
