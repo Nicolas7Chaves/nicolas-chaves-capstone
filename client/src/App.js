@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        {/* <Route path='/' element={<HomePage />} /> */}
         <Route path='/dashboard' element={<DashboardPage />} />
         <Route path='/dashboard/clockin' element={<ClockIn />} />
         <Route path='/dashboard/clockout' element={<ClockOut />} />
