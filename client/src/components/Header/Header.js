@@ -16,9 +16,6 @@ function Header() {
                     <NavLink to='/attendance' className={({ isActive }) => isActive ? "header__button header__button--active" : "header__button header__button--attendance"}>Attendance</NavLink>
                 </div>
                 </div>
-                {/* <div className='header__layout3'>
-                    <NavLink to='/' className={({ isActive }) => isActive ? "header__button header__button--active" : "header__button header__button--home"}>About Me</NavLink>
-                </div> */}
             </div>
         </section>
     )

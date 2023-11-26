@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddEmployee.scss';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function AddEmployee() {
     const [newEmployee, setNewEmployee] = useState({
@@ -8,6 +9,7 @@ function AddEmployee() {
         last_name: '',
         hourly_rate: ''
     });
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setNewEmployee({ ...newEmployee, [e.target.name]: e.target.value });
@@ -19,6 +21,7 @@ function AddEmployee() {
             const response = await axios.post('http://localhost:8081/employees', newEmployee);
             if (response.status === 201) {
                 console.log('Employee added successfully');
+                navigate('/employees');
             }
         } catch (error) {
             console.error('Error adding employee:', error);

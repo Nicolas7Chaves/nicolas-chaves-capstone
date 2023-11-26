@@ -6,12 +6,12 @@ import Scanner from '../Scanner/Scanner';
 
 function ClockOut() {
     const [employee_id, setEmployee_id] = useState('');
-    const navigate = useNavigate(); // Hook for navigation
+    const navigate = useNavigate();
 
-    // Define handleAlertAndNavigate function inside your component
+    
     const handleAlertAndNavigate = (message) => {
         alert(message);
-        navigate('/dashboard'); // Navigate to dashboard after alert
+        navigate('/dashboard');
     };
 
     const handleSubmit = useCallback(async () => {
@@ -49,14 +49,14 @@ function ClockOut() {
     }, [employee_id, handleSubmit]);
 
     return (
-        <>
-            <h2>Clock Out!</h2>
-            <div>
-                <h2>Scan Here</h2>
+        <div className='clock-out'>
+            <h2 className='clock-out__title'>Clock Out!</h2>
+            <div className='clock-out__scanner-layout'>
+                <h2 className='clock-out__scanner-title'>Scan Here</h2>
                 <Scanner onScan={handleScan} />
             </div>
             <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-                <div>
+                <div className='clock-out__manual'>
                     <label> ID: </label>
                     <input
                         type='number'
@@ -64,9 +64,9 @@ function ClockOut() {
                         onChange={(e) => setEmployee_id(e.target.value)}
                     />
                 </div>
-                <button type='submit'>Clock Out!</button>
+                <button className='clock-out__manual-button' type='submit'>Clock Out!</button>
             </form>
-        </>
+        </div>
     );
 }
 

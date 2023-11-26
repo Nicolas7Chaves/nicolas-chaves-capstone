@@ -94,6 +94,7 @@ function Employees() {
                         onSave={handleUpdateEmployee}
                         onRemove={handleRemove}
                         onClose={() => setEditingEmployee(null)}
+                        onActionComplete={() => setEditingEmployee(null)}
                     />
                 )}
             </div>

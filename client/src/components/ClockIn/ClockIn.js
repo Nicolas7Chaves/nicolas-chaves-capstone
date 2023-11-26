@@ -46,14 +46,14 @@ function ClockIn() {
     }, [employee_id, handleSubmit]);
 
     return (
-        <>
-            <h2>Clock In!</h2>
-            <div>
-                <h2>Scan Here</h2>
+        <div className='clock-in'>
+            <h2 className='clock-in__title'>Clock In!</h2>
+            <div className='clock-in__scanner-layout'>
+                <h2 className='clock-in__scanner-title'>Scan Here</h2>
                 <Scanner onScan={handleScan} />
             </div>
             <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-                <div>
+                <div className='clock-in__manual'>
                     <label> ID: </label>
                     <input
                         type='number'
@@ -61,9 +61,9 @@ function ClockIn() {
                         onChange={(e) => setEmployee_id(e.target.value)}
                     />
                 </div>
-                <button type='submit'>Clock In!</button>
+                <button className='clock-in__manual-button' type='submit'>Clock In!</button>
             </form>
-        </>
+        </div>
     );
 }
 
