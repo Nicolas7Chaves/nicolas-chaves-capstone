@@ -12,25 +12,7 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.6);
-    &__title {
-        font-size: 2rem;
-    }
-    &__close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-    &__label {
-        font-size: 1.25rem;
-    }
-    &__input {
-        height: 3rem;
-        border-radius: 5px;
-        background-color: $background;
-        border: none;
-        font-size: 1.25rem;
-    }
+
     &__content {
         background-color: #fefefe;
         margin: 15% auto;
@@ -38,22 +20,65 @@
         border: 1px solid #888;
         width: 80%;
         border-radius: 5px;
+    }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+    &__close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    &__title {
+        font-size: 2rem;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__label {
+        font-size: 1.25rem;
+        margin: .5rem 0;
+    }
+
+    &__input {
+        height: 3rem;
+        border-radius: 5px;
+        background-color: $background;
+        border: none;
+        font-size: 1.25rem;
+        margin: .5rem 0;
+        padding-left: .75rem;
+    }
+
+    &__button {
+        width: 100%;
+        height: 2rem;
+        margin-top: .5rem;
+        border-radius: 5px;
+        border: 1px solid $slate;;
+    }
+
+    &__button--save {
+        transition: border-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+
+        &:hover {
+            border-color: $green;
+            color: $green;
+            border: 2px solid $green;
         }
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
+    &__button--remove {
+        transition: border-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
 
-            label,
-            input {
-                margin: 10px 0;
-            }
+        &:hover {
+            border-color: $red;
+            color: $red;
+            border: 2px solid $red;
         }
     }
 }
