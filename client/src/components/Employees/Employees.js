@@ -24,7 +24,7 @@ function Employees() {
     }, []);
 
     const handleAddEmployee = () => {
-        navigate('/employee/add-employee');
+        navigate('/employees/add-employee');
     };
 
     const handleEdit = (employee) => {
@@ -65,7 +65,7 @@ function Employees() {
 
     return (
         <>
-            <button onClick={handleAddEmployee} className="add-employee-button">+</button>
+            <button onClick={handleAddEmployee} className="add-employee-button">Add Employee</button>
             <div className="employees-container">
                 {employees.map(employee => (
                     <div key={employee.id} className="employee-box">

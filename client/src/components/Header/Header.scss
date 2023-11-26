@@ -31,14 +31,14 @@
         }
         &:hover {
             background-color: $dark-blue; 
-            transition: background-color 0.8s ease;// Slightly darker on hover
+            transition: background-color 0.8s ease;
         }
     }
     &__button--active {
-        background-color: $dark-blue; // Darker background color for active button
+        background-color: $dark-blue; 
     }
-    // Styling specific to the Home button
+    
     .header__button--home {
-        margin-right: auto; // Pushes all other elements to the right
+        margin-right: auto;
     }
 }
