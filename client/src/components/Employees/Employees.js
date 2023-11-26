@@ -65,7 +65,9 @@ function Employees() {
 
     return (
         <>
-            <button onClick={handleAddEmployee} className="add-employee-button">Add Employee</button>
+            <div className='add-employee-button--layout'>
+                <button onClick={handleAddEmployee} className="add-employee-button">Add Employee</button>
+            </div>
             <div className="employees-container">
                 {employees.map(employee => (
                     <div key={employee.id} className="employee-box">
