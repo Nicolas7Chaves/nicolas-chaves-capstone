@@ -10,7 +10,7 @@ function Attendance() {
     const [startDate, setStartDate] = useState(moment().startOf('isoWeek').toDate());
 
     useEffect(() => {
-        // Automatically set endDate to Sunday of the selected week
+        // Set endDate to Sunday of the selected week
         const endDate = moment(startDate).endOf('isoWeek').toDate();
         getAttendance(startDate, endDate);
     }, [startDate]);
@@ -57,7 +57,7 @@ function Attendance() {
     
     const filterMondays = (date) => {
         const day = moment(date).day();
-        return day === 1; // 1 represents Monday
+        return day === 1; // 1 = Monday
     };
 
     return (

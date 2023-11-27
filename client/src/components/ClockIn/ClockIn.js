@@ -31,22 +31,19 @@ function ClockIn() {
         }
     }, [employee_id, navigate]);
 
-    // Define handleScan inside the component
     const handleScan = (result) => {
-        // Check if the result starts with the expected URL
+        // QR error proofing
         if (result.startsWith('http://localhost:3000/employee/')) {
             const urlParts = result.split('/');
             const employeeId = urlParts.pop();
             setEmployee_id(employeeId);
         } else {
-            // Handle the case where the scanned QR code is not valid
             console.error('Scanned QR code is not a valid employee URL.');
             navigate('/dashboard');
         }
     };
 
     useEffect(() => {
-        // Check if employee_id is not empty, then call handleSubmit
         if (employee_id !== '') {
             handleSubmit();
         }

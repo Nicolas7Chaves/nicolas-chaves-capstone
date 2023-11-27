@@ -8,7 +8,7 @@ import moment from 'moment';
 
 function Employees() {
     const [employees, setEmployees] = useState([]);
-    const [editingEmployee, setEditingEmployee] = useState(null); // Declare editingEmployee state
+    const [editingEmployee, setEditingEmployee] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {

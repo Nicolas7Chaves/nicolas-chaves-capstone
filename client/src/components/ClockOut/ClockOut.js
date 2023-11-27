@@ -38,12 +38,11 @@ function ClockOut() {
     }, [employee_id, navigate]);
 
     const handleScan = (result) => {
-        // Check if the result starts with the expected URL
+        // QR error proofing
         if (result.startsWith('http://localhost:3000/employee/')) {
             const employeeId = result.split('/').pop();
             setEmployee_id(employeeId);
         } else {
-            // Handle the case where the scanned QR code is not valid
             console.error('Scanned QR code is not a valid employee URL.');
             navigate('/dashboard');
         }
