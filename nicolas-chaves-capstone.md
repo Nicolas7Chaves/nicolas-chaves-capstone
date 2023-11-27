@@ -40,7 +40,7 @@ List the functionality that your app will include. These can be written as user 
 
 ### Tech Stack
 List technologies that will be used in your app, including any libraries to save time or provide more functionality. Be sure to research any potential limitations.
--   **Frontend:** React for a cross-platform app.
+-   **Frontend:** React & SASS.
 -   **Backend:** Node.js with Express for server-side logic.
 -   **Database:** Knex and SQL for storing employee data, hours, and wages.
 -   **QR Code Generation/Reading:** Integration of a QR code library for generating and reading QR codes.
@@ -53,10 +53,9 @@ List any external sources of data that will be used in your app.
 
 ### Sitemap
 List the pages of your app with brief descriptions. You can show this visually, or write it out.
-1.  **Home Page:** Overview of the application features.
-2.  **Dashboard:** Real-time attendance tracking and hours logged.
-3.  **Employee Management:** Add/edit employee details.
-4.  **Reports:** Generate and view attendance and wage reports.
+1.  **Dashboard:** Option to Clock In or Clock Out.
+2.  **Employees:** Add/edit employee details, all Employee Data.
+3.  **Attendance:** Generate and view attendance and wage reports.
   
 
 ### Mockups
@@ -70,17 +69,17 @@ Provide visuals of your app's screens. You can use tools like Figma or pictures 
 
 ### Data
 Describe your data and the relationships between them. You can show this visually using diagrams, or write it out.
--   **Employee Data:** Personal details, hourly rate, and login information.
--   **Attendance Records:** Date, time, and duration of each employee's work hours.
--   **Wage Data:** Calculated based on attendance records and hourly rates.
-  
+-   **Employee Data:** Personal details, and hourly rate.
+-   **Attendance Records:** Date, time, and duration of each employee's work hours and Total Pay.
+
 
 ### Endpoints
 List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
--   **/employees:** GET to retrieve employee details, POST to add a new employee.
--   **/attendance:** GET to retrieve attendance data, POST for clocking in/out.
--   **/reports:** GET to generate and retrieve reports.
-  
+-   **/employees:** GET to retrieve employee details.
+-   **/employees/add-employee:** POST to add a new employee.
+-   **/attendance:** GET to retrieve attendance data.
+-   **/dashboard/clockin:** POST clock in Employee ID.
+-   **/dashboard/clockout:** PUT to clock out Employee ID.
 
 ## Roadmap
 
