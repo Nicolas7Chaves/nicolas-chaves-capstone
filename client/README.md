@@ -1,70 +1,55 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  
+# PayPatrol
 
-## Available Scripts
+ 
+ ## Current Version
+ ### Employee Clock In or Out
+ This section provides employees with the capability to conveniently clock in/out using their unique QR Employee Badges.
+ ![Employee Clock In/Out](./highres.gif)
 
-In the project directory, you can run:
+### Manager Employee Dashboard
+The Manager Employee Dashboard offers real-time oversight of employee attendance and provides access to employee information. Managers can easily edit, delete, or add new employees on the fly.
+ ![Manager Employee Dashboard](./pic2.png)
 
-### `npm start`
+ ### Manager Weekly Calendar Dashboard
+The Manager Weekly Calendar Dashboard displays daily work hours, calculates the total weekly hours, and determines payment based on the hourly rate and total hours worked.
+ ![Manager Employee Weekly Calendar](./pic1.png)
+ 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+What is your app? Brief description in a couple of sentences.
 
-### `npm test`
+The app is a time tracking and attendance management application that allows employees to clock in and out of work using a QR code reader. It also provides a feature to display the weekly hours worked by each employee and calculates their corresponding wages, making it easier for management to determine how much to pay each employee.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  
 
-### `npm run build`
+### Problem
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Why is your app needed? Background information around any pain points or other reasons.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The app is needed to address the time tracking and attendance management challenges faced by small businesses that haven't yet implemented HR or payroll solutions. Many small businesses currently rely on manual methods, which can lead to chaotic record-keeping and be time-consuming. This app aims to streamline the process, making it more efficient and less prone to errors or data loss, ultimately saving businesses time and resources.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  
 
-### `npm run eject`
+### User Profile
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Who will use your app? How will they use it? 
+Small Business Owners/Managers: Small business owners or managers will be the primary users of the app. They will use it to track the attendance and working hours of their employees, generate reports, and calculate wages.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1.  **QR Code Clock-In/Clock-Out:** Employees can easily mark their attendance and working hours.
+2.  **Automated Hours Tracking:** The app tracks and displays weekly hours worked by each employee.
+3.  **Wage Calculation:** Automatic calculation of wages based on tracked hours and set pay rates.
+4.  **User-Friendly Interface:** Designed for ease of use, requiring minimal training for employees and managers.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Work In Progress
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Excel Exporting**: Exporting data to excel for managers.
+**Authentication** : Login for Managers and Employees.
+**Additional Languages**: More Languages will be used to make the website public.
