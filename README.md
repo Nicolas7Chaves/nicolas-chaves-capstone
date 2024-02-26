@@ -4,6 +4,8 @@
 
  
  ## Current Version
+ Check out the Back End Here! : 
+ https://github.com/Nicolas7Chaves/nicolas-chaves-capstone-be
  ### Employee Clock In or Out
  This section provides employees with the capability to conveniently clock in/out using their unique QR Employee Badges.
  ![Employee Clock In/Out](./highres.gif)
